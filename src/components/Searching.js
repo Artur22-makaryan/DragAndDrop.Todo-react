@@ -1,53 +1,7 @@
-// import React, {Component} from 'react';
-// import './Searching.css'
-//
-// class Searching extends Component {
-//     constructor() {
-//         super();
-//         this.state = {
-//             pictures: [],
-//         };
-//     }
-//
-//     componentDidMount() {
-//         console.log(!!this.props.src)
-//         fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + process.env.REACT_APP_API_KEY + '&tags='+ this.props.src +'&per_page=5&page=1&format=json&nojsoncallback=1')
-//             .then(function (response) {
-//                 return response.json();
-//             })
-//             .then(function (j) {
-//
-//                 let picArray = j.photos.photo.map((pic) => {
-//                     var srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg';
-//                     return (
-//                         <img alt={this.props.src} src={srcPath}></img>
-//                     )
-//                 })
-//                 this.setState({pictures: picArray});
-//             }.bind(this))
-//     }
-//
-//     render() {
-//         return (
-//             <div className={"imgs"}>
-//                     {this.state.pictures.map((el,index)=>{
-//                         return (
-//                             <div key={index}>
-//                                {el}
-//                             </div>
-//                         )
-//                     })
-//                     }
-//             </div>
-//         );
-//     }
-// }
-//
-// export default Searching;
-
-
 import React, {useEffect, useState} from 'react';
 import './Searching.css'
+import DragDrop from "./DragDrop";
+
 
 function Searching({src}) {
     const [pictures, setPictures] = useState([])
@@ -62,8 +16,9 @@ function Searching({src}) {
             .then(function (j) {
                 let picArray = j.photos.photo.map((pic) => {
                     var srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg';
+
                     return (
-                        <img alt={src} src={srcPath}></img>
+                        <img alt={src} src={srcPath} id={pic.id}></img>
                     )
                 })
                 setSearched(true)
@@ -74,27 +29,19 @@ function Searching({src}) {
 
     }, [src])
 
-
     return (
-
         <>
             {
-                searched ? <div className={"imgs"}>
-                    {pictures.map((el, index) => {
-                        return (
-                            <div key={index}>
-                                {el}
-                            </div>
-                        )
-                    })
-                    }
-                </div> : <div className={"imgs"}>
+                searched ?
+                    <div>
+                        <DragDrop src={src} PictureList={pictures} />
+                    </div>
+                 : <div className={"imgs"}>
 
                 </div>
             }
 
         </>
-
     );
 
 }

@@ -1,0 +1,38 @@
+.Pictures {
+     width: 650px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.Board {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 650px;
+    height: 150px;
+    border: 2px dashed #7a7a7a;
+    position: absolute;
+    top: 280px;
+}
+.BoardNone {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 650px;
+    height: 150px;
+    border: 2px dashed #7a7a7a;
+    position: absolute;
+    top: 280px;
+}
+.paragraph{
+    font-size: 15px;
+    color: #787881;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}

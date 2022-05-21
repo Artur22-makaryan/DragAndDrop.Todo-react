@@ -1,0 +1,86 @@
+.App {
+    width: 800px;
+    height: 1000px;
+    background: rgba(132, 208, 253, 0.44);
+
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.onlyoneinput {
+    width: 540px;
+    height: 30px;
+    background: white;
+    font-size: 19px;
+    margin-left: 80px;
+}
+
+.btn-search {
+    width: 80px;
+    height: 29px;
+    margin-top: 3px;
+    margin-left: 2px;
+}
+
+.m {
+    margin-top: 10px
+}
+
+.searched-images {
+    height: auto;
+    width: 650px;
+}
+
+.btn-appro {
+    background-color: #0a71e0;
+    border-radius: 30px;
+    width: 50%;
+    height: 80px;
+    border:none;
+    cursor: pointer;
+}
+.btn-appro:active {
+    background-color: rgba(104, 175, 255, 0.3);
+    border-radius: 30px;
+    width: 50%;
+    height: 80px;
+    border:none;
+    cursor: pointer;
+}
+.btn-text{
+    color:white;
+    text-align: center;
+    font-size: 20px;
+}
+.bts{
+    width: 650px;
+}
+.draganddrop {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.Pictures {
+    margin: 10px;
+}
+
+.Board {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 650px;
+    height: 150px;
+    border: 2px dashed #7a7a7a;
+}
