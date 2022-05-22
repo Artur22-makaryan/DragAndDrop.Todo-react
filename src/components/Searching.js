@@ -3,7 +3,7 @@ import './Searching.css'
 import DragDrop from "./DragDrop";
 
 
-function Searching({src}) {
+function Searching({src,accKey,stylesTop}) {
     const [pictures, setPictures] = useState([])
 
     const [searched, setSearched] = useState(false)
@@ -34,7 +34,7 @@ function Searching({src}) {
             {
                 searched ?
                     <div>
-                        <DragDrop src={src} PictureList={pictures} />
+                        <DragDrop src={src} PictureList={pictures} accKey={accKey} stylesTop={stylesTop}/>
                     </div>
                  : <div className={"imgs"}>
 
