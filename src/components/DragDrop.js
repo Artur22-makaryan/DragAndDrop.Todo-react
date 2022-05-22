@@ -54,7 +54,7 @@ function DragDrop({PictureList,src,accKey,stylesTop}) {
                 p.shift()
                 setPictures(p)
             } else {
-                p.splice(i, i)
+                p.splice(i, 1)
                 setPictures(p)
             }
         } else {
