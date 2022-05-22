@@ -50,13 +50,10 @@ function DragDrop({PictureList,src,accKey,stylesTop}) {
             })
             let i = Pictures.findIndex((picture) => id.id === picture.props.id)
             let p = Pictures
-            if (i === 0) {
-                p.shift()
-                setPictures(p)
-            } else {
+
                 p.splice(i, 1)
                 setPictures(p)
-            }
+
         } else {
             swal("Wrong recruitment!", "...Be carefully!");
         }
