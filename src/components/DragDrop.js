@@ -1,15 +1,16 @@
-import React, { useState} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import Picture from "./Picture";
 import {useDrop} from "react-dnd";
 import "./DragDrop.css"
 import swal from 'sweetalert'
+import {UserContext} from "../App";
 
-function DragDrop({PictureList, src, accKey, stylesTop}) {
+
+function DragDrop({PictureList, src}) {
     const [board, setBoard] = useState([]);
     const [Pictures, setPictures] = useState(PictureList)
     const [collected, setCollected] = useState(false)
-    const [top, setTop] = useState(stylesTop)
-
+    const {accKey, stylesTop} = useContext(UserContext)
 
     const [{}, dropZone] = useDrop(() => ({
         accept: "image",
@@ -28,7 +29,7 @@ function DragDrop({PictureList, src, accKey, stylesTop}) {
             setBoard((board) => {
                 if (board.length === 4) {
                     setCollected(true)
-                    setTop(top - 1)
+
                     return swal({
                         title: "Good job!",
                         text: `You finished recruitment for ${src}s!`,
@@ -65,7 +66,7 @@ function DragDrop({PictureList, src, accKey, stylesTop}) {
                 collected ?
                     <div></div>
                     :
-                    <div className="Board" ref={dropZone} style={{top: top * 120 + 130 + 'px'}}>
+                    <div className="Board" ref={dropZone} style={{top: stylesTop * 120 + 130 + 'px'}}>
                         <p className={"paragraph"}> Group {src}s</p>
                         <div className={'flex-row'}>{board.map((picture) => {
                             return <Picture src={picture.props.src} id={picture.props.id} key={picture.props.id}/>;
