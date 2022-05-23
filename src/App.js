@@ -9,18 +9,16 @@ function App() {
     const [search, setSearch] = useState('')
     const [src, setSrc] = useState([])
     const [accKey,setAccKey] = useState([])
-    const [opened, setOpened] = useState(false)
 
     function SearchImages() {
         setSrc(search.split(' '))
-        // console.log(search.split(' '))
+
     }
 
     function OpeningGroup(e) {
-        //accesKey
-        setOpened(!opened)
-        setAccKey([e, opened])
-        console.log(accKey)
+
+        setAccKey(e)
+
     }
 
     return (
@@ -46,7 +44,6 @@ function App() {
                                     className={"btn-appro btn-text"}
                                     onClick={(e)=>{
                                            OpeningGroup(e.target.innerText)
-                                            console.log(e.target.innerText)
                                         }}
                                 >{e}</span>
                             )
