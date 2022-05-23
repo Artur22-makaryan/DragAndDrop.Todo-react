@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import Picture from "./Picture";
 import {useDrop} from "react-dnd";
 import "./DragDrop.css"
@@ -7,12 +7,11 @@ import swal from 'sweetalert'
 function DragDrop({PictureList, src, accKey, stylesTop}) {
     const [board, setBoard] = useState([]);
     const [Pictures, setPictures] = useState(PictureList)
-    const [collected, setColected] = useState(false)
-    const [opened, setOpened] = useState(false)
+    const [collected, setCollected] = useState(false)
     const [top, setTop] = useState(stylesTop)
 
 
-    const [{isOver}, dropZone] = useDrop(() => ({
+    const [{}, dropZone] = useDrop(() => ({
         accept: "image",
         drop: (id) => addImageToBoard(id),
         collect: (monitor) => ({
@@ -28,9 +27,9 @@ function DragDrop({PictureList, src, accKey, stylesTop}) {
 
             setBoard((board) => {
                 if (board.length === 4) {
-                    setColected(true)
+                    setCollected(true)
                     setTop(top - 1)
-                    swal({
+                    return swal({
                         title: "Good job!",
                         text: `You finished recruitment for ${src}s!`,
                         icon: "success",
@@ -48,7 +47,7 @@ function DragDrop({PictureList, src, accKey, stylesTop}) {
             setPictures(p)
 
         } else {
-            swal("Wrong recruitment!", "...Be carefully!");
+            return swal("Wrong recruitment!", "...Be carefully!");
         }
     };
 
